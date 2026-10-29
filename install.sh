@@ -25,6 +25,8 @@ if [ ! -f "$MODEL" ]; then
   mv "$MODEL.part" "$MODEL"
 fi
 
+[ -f "$CONF/prompt.txt" ] || printf '你好,这是一段中文。Hello, this is an English sentence.' > "$CONF/prompt.txt"
+
 echo "==> 编译"
 swiftc -O "$HERE/OMLXVoice.swift" -o "$APP/Contents/MacOS/omlx-voice"
 cat > "$APP/Contents/Info.plist" <<PL
